@@ -168,4 +168,14 @@ pub mod machine_id {
     }
 }
 
+#[cfg(target_os = "android")]
+pub mod machine_id {
+    use std::error::Error;
+
+    /// Return machine id
+    pub fn get_machine_id() -> Result<String, Box<dyn Error>> {
+        Ok("android-id-tbd".to_string())
+    }
+}
+
 pub use machine_id::get_machine_id as get;
